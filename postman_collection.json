@@ -1,0 +1,592 @@
+{
+  "info": {
+    "name": "Reto Arquitectura Microservicios",
+    "description": "Colección completa de endpoints para los microservicios ms-users y ms-transactions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url_users",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "base_url_transactions",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Microservicio Users (ms-users)",
+      "item": [
+        {
+          "name": "Personas",
+          "item": [
+            {
+              "name": "Get all personas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/personas",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["personas"]
+                },
+                "description": "Obtiene todas las personas registradas"
+              }
+            },
+            {
+              "name": "Get persona by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/personas/{identificacion}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["personas", "{identificacion}"],
+                  "variable": [
+                    {
+                      "key": "identificacion",
+                      "value": "123456789",
+                      "description": "Identificación de la persona"
+                    }
+                  ]
+                },
+                "description": "Obtiene una persona por su identificación"
+              }
+            },
+            {
+              "name": "Create persona",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identificacion\": \"123456789\",\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Pérez\",\n  \"email\": \"juan.perez@email.com\",\n  \"telefono\": \"+57 300 123 4567\",\n  \"direccion\": \"Calle 123 #45-67\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_users}}/personas",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["personas"]
+                },
+                "description": "Crea una nueva persona"
+              }
+            },
+            {
+              "name": "Update persona",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identificacion\": \"123456789\",\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Pérez\",\n  \"email\": \"juan.perez@email.com\",\n  \"telefono\": \"+57 300 123 4567\",\n  \"direccion\": \"Calle 123 #45-67\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_users}}/personas/{identificacion}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["personas", "{identificacion}"],
+                  "variable": [
+                    {
+                      "key": "identificacion",
+                      "value": "123456789",
+                      "description": "Identificación de la persona a actualizar"
+                    }
+                  ]
+                },
+                "description": "Actualiza una persona existente"
+              }
+            },
+            {
+              "name": "Delete persona",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/personas/{identificacion}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["personas", "{identificacion}"],
+                  "variable": [
+                    {
+                      "key": "identificacion",
+                      "value": "123456789",
+                      "description": "Identificación de la persona a eliminar"
+                    }
+                  ]
+                },
+                "description": "Elimina una persona"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Clientes",
+          "item": [
+            {
+              "name": "Get all clientes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/clientes",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes"]
+                },
+                "description": "Obtiene todos los clientes registrados"
+              }
+            },
+            {
+              "name": "Get cliente by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/clientes/{clienteId}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes", "{clienteId}"],
+                  "variable": [
+                    {
+                      "key": "clienteId",
+                      "value": "1",
+                      "description": "ID del cliente"
+                    }
+                  ]
+                },
+                "description": "Obtiene un cliente por su ID"
+              }
+            },
+            {
+              "name": "Get clientes by estado",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/clientes/estado/{estado}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes", "estado", "{estado}"],
+                  "variable": [
+                    {
+                      "key": "estado",
+                      "value": "true",
+                      "description": "Estado del cliente (true/false)"
+                    }
+                  ]
+                },
+                "description": "Obtiene clientes filtrados por estado"
+              }
+            },
+            {
+              "name": "Create cliente",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personaId\": \"123456789\",\n  \"contrasena\": \"password123\",\n  \"estado\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_users}}/clientes",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes"]
+                },
+                "description": "Crea un nuevo cliente"
+              }
+            },
+            {
+              "name": "Update cliente",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personaId\": \"123456789\",\n  \"contrasena\": \"newpassword123\",\n  \"estado\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_users}}/clientes/{clienteId}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes", "{clienteId}"],
+                  "variable": [
+                    {
+                      "key": "clienteId",
+                      "value": "1",
+                      "description": "ID del cliente a actualizar"
+                    }
+                  ]
+                },
+                "description": "Actualiza un cliente existente"
+              }
+            },
+            {
+              "name": "Delete cliente",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_users}}/clientes/{clienteId}",
+                  "host": ["{{base_url_users}}"],
+                  "path": ["clientes", "{clienteId}"],
+                  "variable": [
+                    {
+                      "key": "clienteId",
+                      "value": "1",
+                      "description": "ID del cliente a eliminar"
+                    }
+                  ]
+                },
+                "description": "Elimina un cliente"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Microservicio Transactions (ms-transactions)",
+      "item": [
+        {
+          "name": "Cuentas",
+          "item": [
+            {
+              "name": "Get all cuentas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/cuentas",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["cuentas"]
+                },
+                "description": "Obtiene todas las cuentas registradas"
+              }
+            },
+            {
+              "name": "Get cuenta by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/cuentas/{cuentaId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["cuentas", "{cuentaId}"],
+                  "variable": [
+                    {
+                      "key": "cuentaId",
+                      "value": "1",
+                      "description": "ID de la cuenta"
+                    }
+                  ]
+                },
+                "description": "Obtiene una cuenta por su ID"
+              }
+            },
+            {
+              "name": "Create cuenta",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clienteId\": 1,\n  \"numeroCuenta\": \"1234567890\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 1000000,\n  \"estado\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_transactions}}/cuentas",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["cuentas"]
+                },
+                "description": "Crea una nueva cuenta"
+              }
+            },
+            {
+              "name": "Update cuenta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clienteId\": 1,\n  \"numeroCuenta\": \"1234567890\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 1500000,\n  \"estado\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_transactions}}/cuentas/{cuentaId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["cuentas", "{cuentaId}"],
+                  "variable": [
+                    {
+                      "key": "cuentaId",
+                      "value": "1",
+                      "description": "ID de la cuenta a actualizar"
+                    }
+                  ]
+                },
+                "description": "Actualiza una cuenta existente"
+              }
+            },
+            {
+              "name": "Delete cuenta",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/cuentas/{cuentaId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["cuentas", "{cuentaId}"],
+                  "variable": [
+                    {
+                      "key": "cuentaId",
+                      "value": "1",
+                      "description": "ID de la cuenta a eliminar"
+                    }
+                  ]
+                },
+                "description": "Elimina una cuenta"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Movimientos",
+          "item": [
+            {
+              "name": "Get all movimientos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/movimientos",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["movimientos"]
+                },
+                "description": "Obtiene todos los movimientos registrados"
+              }
+            },
+            {
+              "name": "Get movimiento by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/movimientos/{movimientoId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["movimientos", "{movimientoId}"],
+                  "variable": [
+                    {
+                      "key": "movimientoId",
+                      "value": "1",
+                      "description": "ID del movimiento"
+                    }
+                  ]
+                },
+                "description": "Obtiene un movimiento por su ID"
+              }
+            },
+            {
+              "name": "Create movimiento",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fecha\": \"2024-01-15T10:30:00\",\n  \"tipoMovimiento\": \"DEPOSITO\",\n  \"valor\": 500000,\n  \"cuentaId\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_transactions}}/movimientos",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["movimientos"]
+                },
+                "description": "Crea un nuevo movimiento"
+              }
+            },
+            {
+              "name": "Update movimiento",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fecha\": \"2024-01-15T10:30:00\",\n  \"tipoMovimiento\": \"RETIRO\",\n  \"valor\": 200000,\n  \"cuentaId\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{base_url_transactions}}/movimientos/{movimientoId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["movimientos", "{movimientoId}"],
+                  "variable": [
+                    {
+                      "key": "movimientoId",
+                      "value": "1",
+                      "description": "ID del movimiento a actualizar"
+                    }
+                  ]
+                },
+                "description": "Actualiza un movimiento existente"
+              }
+            },
+            {
+              "name": "Delete movimiento",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/movimientos/{movimientoId}",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["movimientos", "{movimientoId}"],
+                  "variable": [
+                    {
+                      "key": "movimientoId",
+                      "value": "1",
+                      "description": "ID del movimiento a eliminar"
+                    }
+                  ]
+                },
+                "description": "Elimina un movimiento"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reportes",
+          "item": [
+            {
+              "name": "Get account statement",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url_transactions}}/reportes?clienteId=1&startDate=2024-01-01&endDate=2024-01-31",
+                  "host": ["{{base_url_transactions}}"],
+                  "path": ["reportes"],
+                  "query": [
+                    {
+                      "key": "clienteId",
+                      "value": "1",
+                      "description": "ID del cliente"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2024-01-01",
+                      "description": "Fecha de inicio (YYYY-MM-DD)"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-31",
+                      "description": "Fecha de fin (YYYY-MM-DD)"
+                    }
+                  ]
+                },
+                "description": "Genera el estado de cuenta de un cliente en un período específico"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
