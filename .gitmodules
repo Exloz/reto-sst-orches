@@ -1,0 +1,7 @@
+[submodule "ms-transactions"]
+	path = ms-transactions
+	url = https://github.com/Exloz/reto-ssr-ms-transactions.git
+
+[submodule "ms-users"]
+	path = ms-users
+	url = https://github.com/Exloz/reto-ssr-ms-users.git
