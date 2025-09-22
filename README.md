@@ -14,12 +14,14 @@ git clone --recursive https://github.com/Exloz/reto-sst-orches.git
 
 ## 📁 Estructura del Proyecto
 
-```
+ ```
 reto-sst-orches/
 ├── ms-users/              # Servicio de usuarios
 ├── ms-transactions/       # Servicio de transacciones
 ├── docker-compose.yml     # Configuración de Docker Compose
 ├── BaseDatos.sql         # Script de base de datos
+├── postman_collection.json # Colección de Postman
+├── postman_environment.json # Variables de entorno Postman
 └── README.md             # Este archivo
 ```
 
@@ -41,8 +43,31 @@ reto-sst-orches/
 docker compose build
 
 # Ejecutar todos los servicios
-docker compose up
+ docker compose up
 ```
+
+## 🧪 Testing con Postman
+
+### Importación
+1. Importar en Postman: `postman_collection.json` + `postman_environment.json`
+2. Seleccionar environment: "Reto Arquitectura Microservicios"
+3. Variables: `base_url_users:8080`, `base_url_transactions:8081`
+
+### Endpoints Disponibles
+
+#### ms-users (Puerto 8080)
+**Personas:** GET, POST, PUT, DELETE /personas
+**Clientes:** GET, POST, PUT, DELETE /clientes + GET /clientes/estado/{estado}
+
+#### ms-transactions (Puerto 8081)
+**Cuentas:** GET, POST, PUT, DELETE /cuentas
+**Movimientos:** GET, POST, PUT, DELETE /movimientos
+**Reportes:** GET /reportes (clienteId, startDate, endDate)
+
+### Uso
+- Endpoints listos con datos de ejemplo
+- Variables editables en Postman
+- JSON de ejemplo en POST/PUT
 
 ## 📝 Notas Importantes
 
